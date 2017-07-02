@@ -11,7 +11,7 @@
 #include "fsl_debug_console.h"
 #include "ledswi_hal.h"
 #include "buzzer_hal.h"
-#include "timer_cooler.h"
+#include "timer_counter.h"
 
 #define CHAR_JOKER '&'
 
@@ -128,7 +128,7 @@ void GetMsg_Protocolo(char cMsg){
 				if(buzzer_count_digits == 4){
 					Answer_Procotolo(ack_answer);
 					next_state = waiting_state;
-					buzzer_setBuzzer(buzzer_milliseconds);
+					buzzer_setBuzz();
 				}
 			}else{
 				next_state = waiting_state;
@@ -140,8 +140,8 @@ void GetMsg_Protocolo(char cMsg){
 			if(num <=9 && num >= 0){
 				cooler_duty = cooler_duty * 10 + num;
 				cooler_count_digits++;
-				if(cooler_count_digits == 3){
-					if(timer_coolerfan_setDutyCycle(cooler_duty)){
+			    if(cooler_count_digits == 3){
+					if(timer_DutyCycle_value(cooler_duty)){
 						Answer_Procotolo(ack_answer);
 					}else{
 						Answer_Procotolo(err_answer);

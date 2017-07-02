@@ -19,12 +19,12 @@ void timer_initTPM1AsPWM(void)
 	TPM1_C1SC |=  TPM_CnSC_MSA(0) | TPM_CnSC_MSB(1) | TPM_CnSC_ELSA(0) | TPM_CnSC_ELSB(1)|  TPM_CnSC_CHIE(1);
 
 	TPM1_CNT = 0;
-	TPM1_MOD = 100;
+	TPM1_MOD = 2000;
 //	TPM1_C1V = 15; //PWM 100%
-//	TPM1_C1V = ??; //PWM 75% 
-//	TPM1_C1V = ??; //PWM 50% 
-//	TPM1_C1V = ??; //PWM 25% 
-//	TPM1_C1V = ??; //PWM 0%  
+//	TPM1_C1V = ??; //PWM 75%
+//	TPM1_C1V = ??; //PWM 50%
+//	TPM1_C1V = ??; //PWM 25%
+//	TPM1_C1V = ??; //PWM 0%
 
 
 }
@@ -45,6 +45,10 @@ void timer_coolerfan_init(void)
 
 }
 
-void timer_DutyCycle_value(int DutyCycle){
-	TPM1_C1V = DutyCycle;
+int timer_DutyCycle_value(int DutyCycle){
+	if(100.1 >= DutyCycle && -0.1 <= DutyCycle){
+			TPM1_C1V = (int)(20*DutyCycle);
+			return 1;
+		}
+		return 0;
 }

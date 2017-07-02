@@ -107,7 +107,6 @@ static double fnum = 0.0;
  * @param[in] neg       Polarity of the number.
  * @param[in] radix     The radix to be converted to.
  * @param[in] use_caps  Used to identify %x/X output format.
-
  * @return Length of the converted string.
  */
 static int32_t mknumstr (char *numstr, void *nump, int32_t neg, int32_t radix, bool use_caps);
@@ -120,7 +119,6 @@ static int32_t mknumstr (char *numstr, void *nump, int32_t neg, int32_t radix, b
  * @param[in] nump              Pointer to the number.
  * @param[in] radix             The radix to be converted to.
  * @param[in] precision_width   Specify the precision width.
-
  * @return Length of the converted string.
  */
 static int32_t mkfloatnumstr (char *numstr, void *nump, int32_t radix, uint32_t precision_width);

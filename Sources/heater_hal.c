@@ -17,13 +17,13 @@ void heater_initTPM1AsPWM(void)
 	TPM1_SC |= TPM_SC_CMOD(1);   //LPTPM Counter increments on every LPTPM counter clock
 	TPM1_SC |= TPM_SC_PS(0);   //Prescale 1:1
 
-	
+
     /* un-gate port clock*/
     SIM_SCGC5 |= SIM_SCGC5_PORTA(CGC_CLOCK_ENABLED);
 
     /* set pin as PWM */
     PORTA_PCR12 |= PORT_PCR_MUX(3);
-	
+
 	TPM1_C0SC |= TPM_CnSC_MSA(0) | TPM_CnSC_MSB(1) | TPM_CnSC_ELSA(0) | TPM_CnSC_ELSB(1) | TPM_CnSC_CHIE(1); //modo de PWM Edge Aligned
 
 	TPM1_CNT = 0;
@@ -48,4 +48,3 @@ int heater_setDutyCycle(int iValue){
 	}
 	return 0;
 }
-

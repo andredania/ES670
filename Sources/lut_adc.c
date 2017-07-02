@@ -1,4 +1,3 @@
-
 /* ***************************************************************** */
 /* File name:        lut_adc.c                                       */
 /* File description: Header file containing the functions/methods    */
@@ -49,9 +48,9 @@ const unsigned char tabela_temp[256] = {
 void initAdc(void){
 
     SIM_SCGC5 |= SIM_SCGC5_PORTE(CGC_CLOCK_ENABLED);
-	
+
 	//Enable clock for ADC0
-	SIM_SCGC6 |= SIM_SCGC6_ADC0(CGC_CLOCK_ENABLED); 
+	SIM_SCGC6 |= SIM_SCGC6_ADC0(CGC_CLOCK_ENABLED);
 
 	// Configura função alternativa
     PORTE_PCR21 = PORT_PCR_MUX(0);
@@ -118,4 +117,3 @@ int valorAdc(void){
 	while(conversaoAdc());
 	return valor();
 }
-
