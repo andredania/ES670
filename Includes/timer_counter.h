@@ -14,4 +14,4 @@ void timer_initTPM1AsPWM(void);
 /* ************************************************ */
 void timer_coolerfan_init(void);
 
-void timer_DutyCycle_value(int DutyCycle);
+int timer_DutyCycle_value(int DutyCycle);
